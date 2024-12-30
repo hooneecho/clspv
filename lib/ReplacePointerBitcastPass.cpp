@@ -363,7 +363,6 @@ void ComputeStore(IRBuilder<> &Builder, StoreInst *ST, Value *OrgGEPIdx,
   // argument, and the source argument type for all getelementptr must be
   // synchronized to bind them to the global variable.
   if (dyn_cast<IntToPtrInst>(Src)) {
-AlexDemydenko marked this conversation as resolved.
     DenseMap<Value *, Type *> TypeCache;
     Type *arg_type = clspv::InferType(Src, Builder.getContext(), &TypeCache);
     OrigSrcTy = arg_type ? arg_type : OrigSrcTy;
